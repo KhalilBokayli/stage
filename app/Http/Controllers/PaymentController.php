@@ -34,11 +34,13 @@ class PaymentController extends Controller
         //
         $transaction=Transaction::where('user_id',session("userId"))->first();
         $transaction->payment_status='completed';
+        $transaction->save();
         $payment=new Payment();
         $payment->transaction_id=$transaction->id;
         $payment->amount=$transaction->total;
-        $payment->amount=Carbon::now()->format('Y-m-d H:i:s');
+        $payment->paid_at=Carbon::now()->format('Y-m-d H:i:s');
         $payment->status='Completed';
+        $payment->save();
         return response()->json($payment,200);
     }
 

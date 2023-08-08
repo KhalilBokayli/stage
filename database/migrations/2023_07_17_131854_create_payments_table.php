@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('transaction_id');
             $table->decimal('amount', 8, 2);
-            $table->dateTime('paid_at');
-            $table->string('status');
+            $table->dateTime('paid_at')->nullable();
+            $table->string('status')->nullable();
             // $table->timestamps();
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
         });
