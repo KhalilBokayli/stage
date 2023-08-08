@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Transaction;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -30,6 +32,14 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+        $transaction=Transaction::where('user_id',session("userId"))->first();
+        $transaction->payment_status='completed';
+        $payment=new Payment();
+        $payment->transaction_id=$transaction->id;
+        $payment->amount=$transaction->total;
+        $payment->amount=Carbon::now()->format('Y-m-d H:i:s');
+        $payment->status='Completed';
+        return response()->json($payment,200);
     }
 
     /**

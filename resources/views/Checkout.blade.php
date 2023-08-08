@@ -37,10 +37,6 @@
             </table>
 
             <div class="flex flex-row justify-center mt-5">
-                <div class="mr-5"><label for="ticket">Ticket</label></div>
-                <div><input type="text" class="border" name="ticket" id="ticket"></div>
-            </div>
-            <div class="flex flex-row justify-center mt-5">
                 <div><input type="button" class="border bg-indigo-500 hover:bg-indigo-100" onclick="SubmitData()"  value="Checkout"></div>
             </div>
 

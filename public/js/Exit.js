@@ -28,13 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
     getData();
 });
 function SubmitData() {
-    let ticket =document.getElementById("ticket").value;
-    let formData=new FormData();
-    console.log(ticket);
-    formData.append('token',ticket);
-    fetch('/stripe', {
+    fetch('/payment', {
         method: 'Post',
-        body:formData,
     })
     .then(response => response.json())
     .then(data => {
